@@ -16,3 +16,5 @@ The GUI extends the Part 1 GUI with the following functionality:
 - You can create a non-leaf `ShapeGroup` by selecting two or more `ShapeGroup`s and then pressing `G` (Shift-G). You can mutate the `ShapeGroup`'s extent and effectively transform all of the shapes it contains as one unit by dragging its top-left and bottom-right controls.
 - To select a child of a `ShapeGroup`, first select the `ShapeGroup` and then click inside the child.
 - To bring a subgroup of a `ShapeGroup` to the front, select the subgroup and press `F` (Shift-F). To send it to the back, press `B` (Shift-B).
+
+You shall create proper documentation for the API. Detailed instructions follow later.
