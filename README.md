@@ -20,3 +20,41 @@ The GUI extends the Part 1 GUI with the following functionality:
 - To bring a subgroup of a `ShapeGroup` to the front, select the subgroup and press `F` (Shift-F). To send it to the back, press `B` (Shift-B).
 
 You shall create proper documentation for the API. Detailed instructions follow later.
+
+## Inner and outer coordinate systems: example
+
+Consider the following code:
+```java
+RoundedPolygon triangle = new RoundedPolygon();
+triangle.setVertices(new IntPoint[] {new IntPoint(10, 10), new IntPoint(30, 10), new IntPoint(20, 20)});
+
+ShapeGroup leaf = new ShapeGroup(triangle);
+assert leaf.getExtent().getTopLeft().equals(new IntPoint(10, 10)) && leaf.getExtent().getBottomRight().equals(new IntPoint(30, 20));
+leaf.setExtent(Extent.ofLeftTopWidthHeight(0, 0, 20, 10));
+
+ShapeGroup nonLeaf = new ShapeGroup(new ShapeGroup[] {leaf});
+assert nonLeaf.getExtent().getTopLeft().equals(new IntPoint(0, 0)) && nonLeaf.getExtent().getBottomRight().equals(new IntPoint(20, 10));
+nonLeaf.setExtent(Extent.ofLeftTopWidthHeight(0, 0, 10, 5));
+```
+
+In `leaf`'s inner coordinate system, the triangle's vertices are (10, 10), (30, 10), (20, 20), and `leaf`'s extent is `Extent.ofLeftTopRightBottom(10, 10, 30, 20)`.
+
+In `leaf`'s outer coordinate system, the triangle's vertices are (0, 0), (20, 0), (10, 10), and `leaf`'s extent is `Extent.ofLeftTopRightBottom(0, 0, 20, 10)`.
+
+In `nonLeaf`'s inner coordinate system, the triangle's vertices are (0, 0), (20, 0), (10, 10), and `nonLeaf`'s extent is `Extent.ofLeftTopRightBottom(0, 0, 20, 10)`.
+
+In `nonLeaf`'s outer coordinate system, the triangle's vertices are (0, 0), (10, 0), (5, 5), and `nonLeaf`'s extent is `Extent.ofLeftTopRightBottom(0, 0, 10, 5)`.
+
+Suppose, now, that I now perform the following call:
+
+```java
+leaf.setExtent(Extent.ofLeftTopWidthHeight(1000, 2000, 20, 10));
+```
+
+After this call:
+- In `leaf`'s inner coordinate system, the triangle's vertices are (10, 10), (30, 10), (20, 20), and `leaf`'s extent is `Extent.ofLeftTopRightBottom(10, 10, 30, 20)`.
+- In `leaf`'s outer coordinate system, the triangle's vertices are (1000, 2000), (1020, 2000), (1010, 2010), `leaf`'s extent is `Extent.ofLeftTopRightBottom(1000, 2000, 1020, 2010)`, and `nonLeaf`'s extent is `Extent.ofLeftTopRightBottom(0, 0, 20, 10)`. Notice that `nonLeaf`'s extent no longer includes its subgroup's extent. The extent of a ShapeGroup G is guaranteed to contain G's subgroups' extents only at the time of creation of G.
+- In `nonLeaf`'s inner coordinate system, the triangle's vertices are (1000, 2000), (1020, 2000), (1010, 2010), `leaf`'s extent is `Extent.ofLeftTopRightBottom(1000, 2000, 1020, 2010)`, and `nonLeaf`'s extent is `Extent.ofLeftTopRightBottom(0, 0, 20, 10)`. A ShapeGroup's inner coordinate system always coincides with its subgroups' outer coordinate systems.
+- In `nonLeaf`'s outer coordinate system, the triangle's vertices are (500, 1000), (510, 1000), (505, 1005), `leaf`'s extent is `Extent.ofLeftTopRightBottom(500, 1000, 510, 1005)`, and `nonLeaf`'s extent is `Extent.ofLeftTopRightBottom(0, 0, 10, 5)`.
+
+Furthermore, `leaf.toInnerCoordinates(new IntPoint(500, 1000))` returns (10, 10), and `leaf.toGlobalCoordinates(new IntPoint(10, 10))` returns (500, 1000).
