@@ -7,7 +7,7 @@ You shall implement classes `Extent` and `ShapeGroup` twice: once in package `dr
 - Class `drawit.shapegroups1.Extent` shall store the `left`, `top`, `right`, and `bottom` attributes and compute the `width` and `height` attributes, whereas class `drawit.shapegroups2.Extent` shall store the `left`, `top`, `width`, and `height` attributes and compute the `right` and `bottom` attributes.
 - Class `drawit.shapegroups1.ShapeGroup` shall be implemented such that method `getSubgroup` runs in constant time, i.e. its running time shall not depend on the number of subgroups directly contained by the shape group. Class `drawit.shapegroups2.ShapeGroup` shall be implemented such that methods `bringToFront` and `sendToBack` run in constant time, i.e. their running time shall not depend on the number of subgroups directly contained by the shape group's parent.
 
-Both versions of classes `Extent` and `ShapeGroup` shall deal with illegal calls defensively.
+Both versions of classes `Extent` and `ShapeGroup` shall deal with illegal calls defensively. You can throw any exception you like, but of course you must document which exception you throw using a `@throws` clause.
 
 Once you have finished implementing the API, you can run the [DrawIt GUI](https://github.com/btj/drawit_part2/releases/download/1/drawitgui_part2.jar) against it. The `.jar` file contains two copies of the GUI: `drawitgui1.GUI` uses `drawit.shapegroups1`, and `drawitgui2.GUI` uses `drawit.shapegroups2`.
 
