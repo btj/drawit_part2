@@ -37,6 +37,8 @@ assert nonLeaf.getExtent().getTopLeft().equals(new IntPoint(0, 0)) && nonLeaf.ge
 nonLeaf.setExtent(Extent.ofLeftTopWidthHeight(0, 0, 10, 5));
 ```
 
+`leaf` applies a translation by (-10, -10) to its contents. `nonLeaf` applies a scaling by (0.5, 0.5) to its contents. The net transformation applied to `triangle` is a translation by (-10, -10), followed by a scaling by (0.5, 0.5).
+
 In `leaf`'s inner coordinate system, the triangle's vertices are (10, 10), (30, 10), (20, 20), and `leaf`'s extent is `Extent.ofLeftTopRightBottom(10, 10, 30, 20)`.
 
 In `leaf`'s outer coordinate system, the triangle's vertices are (0, 0), (20, 0), (10, 10), and `leaf`'s extent is `Extent.ofLeftTopRightBottom(0, 0, 20, 10)`.
