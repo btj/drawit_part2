@@ -54,6 +54,7 @@ leaf.setExtent(Extent.ofLeftTopWidthHeight(1000, 2000, 20, 10));
 ```
 
 After this call:
+- `leaf` applies a translation by (990, 1990) to its contents. `nonLeaf` applies a scaling by (0.5, 0.5) to its contents. The net transformation applied to `triangle` is a translation by (990, 1990), followed by a scaling by (0.5, 0.5).
 - In `leaf`'s inner coordinate system, the triangle's vertices are (10, 10), (30, 10), (20, 20), and `leaf`'s extent is `Extent.ofLeftTopRightBottom(10, 10, 30, 20)`.
 - In `leaf`'s outer coordinate system, the triangle's vertices are (1000, 2000), (1020, 2000), (1010, 2010), `leaf`'s extent is `Extent.ofLeftTopRightBottom(1000, 2000, 1020, 2010)`, and `nonLeaf`'s extent is `Extent.ofLeftTopRightBottom(0, 0, 20, 10)`. Notice that `nonLeaf`'s extent no longer includes its subgroup's extent. The extent of a ShapeGroup G is guaranteed to contain G's subgroups' extents only at the time of creation of G.
 - In `nonLeaf`'s inner coordinate system, the triangle's vertices are (1000, 2000), (1020, 2000), (1010, 2010), `leaf`'s extent is `Extent.ofLeftTopRightBottom(1000, 2000, 1020, 2010)`, and `nonLeaf`'s extent is `Extent.ofLeftTopRightBottom(0, 0, 20, 10)`. A ShapeGroup's inner coordinate system always coincides with its subgroups' outer coordinate systems.
