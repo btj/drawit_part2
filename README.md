@@ -21,6 +21,10 @@ The GUI extends the Part 1 GUI with the following functionality:
 
 You shall create proper documentation for the API. Detailed instructions follow later.
 
+## Notes
+
+- For the `fill` drawing command to fill the shape defined by the preceding sequence of `line` and `arc` commands correctly, each next line or arc in the sequence should start where the preceding one finished. However, whether the shape is filled correctly is not important, so you are free to ignore this issue.
+
 ## Inner and outer coordinate systems: example
 
 Consider the following code:
