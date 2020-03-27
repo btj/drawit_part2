@@ -7,7 +7,7 @@ You shall implement classes `Extent` and `ShapeGroup` twice: once in package `dr
 - Class `drawit.shapegroups1.Extent` shall store the `left`, `top`, `right`, and `bottom` attributes and compute the `width` and `height` attributes, whereas class `drawit.shapegroups2.Extent` shall store the `left`, `top`, `width`, and `height` attributes and compute the `right` and `bottom` attributes.
 - Class `drawit.shapegroups1.ShapeGroup` shall be implemented such that method `getSubgroup` runs in constant time, i.e. its running time shall not depend on the number of subgroups directly contained by the shape group. Class `drawit.shapegroups2.ShapeGroup` shall be implemented such that methods `bringToFront` and `sendToBack` run in constant time, i.e. their running time shall not depend on the number of subgroups directly contained by the shape group's parent.
 
-Students who work alone need not implement `drawit.shapegroups1.ShapeGroup`. (They do need to implement `drawit.shapegroups2.ShapeGroup`.)
+Students who work alone need to implement either `drawit.shapegroups1.ShapeGroup` or `drawit.shapegroups2.ShapeGroup`, but not both. (They do need not implement both `drawit.shapegroups1.Extent` and `drawit.shapegroups2.Extent`.)
 
 Both versions of classes `Extent` and `ShapeGroup` shall deal with illegal calls defensively. You can throw any exception you like, but of course you must document which exception you throw using a `@throws` clause. Typical exceptions thrown defensively include `IllegalArgumentException`, `IllegalStateException`, and `UnsupportedOperationException`. (The GUI catches only `IllegalArgumentException`, but this does not mean that throwing other exceptions is wrong.)
 
