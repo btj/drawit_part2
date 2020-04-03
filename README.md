@@ -9,7 +9,7 @@ You shall implement classes `Extent` and `ShapeGroup` twice: once in package `dr
 
 Hint: for inspiration on how to implement `drawit.shapegroups2.ShapeGroup`, see the [HTML documents, linked list implementation](https://github.com/btj/html_ir/blob/f49255eb73ef7c921a29afc4870a778623200d71/html_ir/src/html_ir/Node.java) and [LinkedIntList](https://github.com/btj/intlist_inheritance/blob/master/intlist_inheritance/src/intlist_inheritance/LinkedIntList.java) examples. (But note the important difference between LinkedIntList and ShapeGroup: LinkedIntList is a single-object abstraction that uses a linked list as a representation internally, whereas ShapeGroup is a multi-object abstraction where the ShapeGroup objects themselves are the elements of the list of their parent's subgroups.)
 
-Students who work alone need to implement either `drawit.shapegroups1.ShapeGroup` or `drawit.shapegroups2.ShapeGroup`, but not both. (They do need not implement both `drawit.shapegroups1.Extent` and `drawit.shapegroups2.Extent`.)
+Students who work alone need to implement either `drawit.shapegroups1.ShapeGroup` or `drawit.shapegroups2.ShapeGroup`, but not both. (They do need to implement both `drawit.shapegroups1.Extent` and `drawit.shapegroups2.Extent`.)
 
 Both versions of classes `Extent` and `ShapeGroup` shall deal with illegal calls defensively. You can throw any exception you like, but of course you must document which exception you throw using a `@throws` clause. Typical exceptions thrown defensively include `IllegalArgumentException`, `IllegalStateException`, and `UnsupportedOperationException`. (The GUI catches only `IllegalArgumentException`, but this does not mean that throwing other exceptions is wrong.)
 
