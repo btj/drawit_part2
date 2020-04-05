@@ -28,6 +28,7 @@ You shall create proper documentation for the API. See the [detailed documentati
 ## Notes
 
 - For the `fill` drawing command to fill the shape defined by the preceding sequence of `line` and `arc` commands correctly, each next line or arc in the sequence should start where the preceding one finished. However, whether the shape is filled correctly is not important, so you are free to ignore this issue.
+- All drawing commands available for both `getDrawingCommands` methods (the one in `RoundedPolygon` and the one in `ShapeGroup`) are documented in the documentation for `getDrawingCommands` in `RoundedPolygon`. This does not mean that you have to use all of the drawing commands in both (or any) of these methods.
 
 ## Inner and outer coordinate systems: example
 
